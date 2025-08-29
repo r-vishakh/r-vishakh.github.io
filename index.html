@@ -1,24 +1,420 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R VISHAKH - Video Editor & Electronics Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #3498db;
+            --secondary: #2c3e50;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--secondary);
+            position: relative;
+            font-size: 2.5rem;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: var(--primary);
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(255, 255, 255, 0.2);
+            margin: 0 auto 30px;
+            background-color: #3498db;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 5rem;
+        }
+        
+        .name {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .tagline {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .about-text {
+            max-width: 800px;
+            text-align: center;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .skill {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .skill:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skill i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .skill h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        
+        /* Timeline Styles */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: var(--primary);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            width: 50%;
+            padding: 20px 40px;
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .timeline-date {
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        /* Contact Section */
+        .contact-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .contact-info {
+            margin: 40px 0;
+        }
+        
+        .contact-info p {
+            margin: 15px 0;
+            font-size: 1.2rem;
+        }
+        
+        .contact-info i {
+            color: var(--primary);
+            margin-right: 10px;
+            width: 25px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .name {
+                font-size: 2.5rem;
+            }
+            
+            .tagline {
+                font-size: 1.4rem;
+            }
+            
+            .timeline:before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 20px;
+                left: 0 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    
+<header>
+    <div class="container">
+        <div class="header-content">
+            <img src="https://i.ibb.co/PG21b0Np/profile.png" alt="R VISHAKH" class="profile-image" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 5px solid rgba(255, 255, 255, 0.2); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);">
+            <h1 class="name">R VISHAKH</h1>
+            <h2 class="tagline">VIDEO EDITOR AND ELECTRONICS ENGINEER</h2>
+            <p>Trivandrum, India</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/rvishakh/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/r-vishakh" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="mailto:vishakhrajeh29@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="tel:7306165588"><i class="fas fa-phone"></i></a>
+            </div>
+            <a href="#contact" class="btn" style="margin-top: 30px;">Get In Touch</a>
+        </div>
+    </div>
+</header>
 
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm a professional Video Editor 🎬 with over 2 years of experience turning ordinary footage into emotionally engaging stories that truly connect with audiences. My passion lies in transforming less-attractive videos into compelling visuals ✨ that leave a lasting impact.</p>
+                    <p>Skilled in Adobe Premiere Pro, After Effects, and CapCut 🖥️, I specialize in creating polished edits that balance technical precision with powerful storytelling. Whether it's short-form content, cinematic edits, or professional brand videos 📹, I focus on capturing emotion, clarity, and creativity in every project.</p>
+                    <p>I'm currently seeking new opportunities for jobs and collaborations 🤝 where I can bring ideas to life through impactful visual storytelling. With a confident, driven approach 🚀, I'm always excited to take on challenges that push creativity to the next level.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-{% include career-profile.html %}
+    <!-- Skills Section -->
+    <section id="skills" style="background-color: #f1f8ff;">
+        <div class="container">
+            <h2 class="section-title">My Skills</h2>
+            <div class="skills-container">
+                <div class="skill">
+                    <i class="fas fa-film"></i>
+                    <h3>Adobe Premiere Pro</h3>
+                    <p>Professional video editing and sequencing</p>
+                </div>
+                <div class="skill">
+                    <i class="fas fa-magic"></i>
+                    <h3>After Effects</h3>
+                    <p>Motion graphics and visual effects</p>
+                </div>
+                <div class="skill">
+                    <i class="fas fa-cut"></i>
+                    <h3>CapCut</h3>
+                    <p>Efficient editing for short-form content</p>
+                </div>
+                <div class="skill">
+                    <i class="fas fa-video"></i>
+                    <h3>Visual Storytelling</h3>
+                    <p>Creating compelling narratives through video</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-{% unless site.data.data.sidebar.education %}
-  {% include education.html %}
-{% endunless %}
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2025 - 2029</div>
+                        <h3>BTech in Electronics and Communication</h3>
+                        <p>Marbaselious College of Engineering, Trivandrum</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Ongoing</div>
+                        <h3>Video Editing Course</h3>
+                        <p>Luminary Lines (6 months course)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-{% include experiences.html %}
+    <!-- Contact Section -->
+    <section id="contact" style="background-color: #f1f8ff;">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <p><i class="fas fa-envelope"></i> vishakhrajeh29@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> 7306165588</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Trivandrum, India</p>
+                </div>
+                <p>I'm currently seeking new opportunities and would love to hear from you!</p>
+                <a href="mailto:vishakhrajeh29@gmail.com" class="btn">Send Email</a>
+            </div>
+        </div>
+    </section>
 
-{% include certifications.html %}
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 R VISHAKH. All Rights Reserved.</p>
+        </div>
+    </footer>
 
-{% include projects.html %}
-
-{% include oss-contributions.html %}
-
-{% include publications.html %}
-
-{% include recommendations.html %}
-
-{% include skills.html %}
+    <script>
+        // Simple animation for timeline items
+        document.addEventListener('DOMContentLoaded', function() {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            timelineItems.forEach(item => {
+                item.style.opacity = 0;
+                item.style.transform = 'translateY(50px)';
+                item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(item);
+            });
+        });
+    </script>
+</body>
+</html>
